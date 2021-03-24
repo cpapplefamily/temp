@@ -41,19 +41,26 @@ public class DriveTrain extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void drivewithJoysticks(JoystickController controller, double speed)
+  public void drivewithJoysticks(double speed, double turn)
   {
-  drive.arcadeDrive(controller.getRawAxis(Constants.Joystick_left_Y_Axis)*speed, controller.getRawAxis(Constants.Joystick_Left_X_Axis)*speed);
+  drive.arcadeDrive(speed, turn);
   }
-  
- public void driveforward(double speed)
- {
-   drive.tankDrive(speed, speed);
- }
+
  public void stop ()
  {
    drive.stopMotor();
  }
 //Autonomous
+
+public void driveforward(double speed)
+{
+  drive.tankDrive(speed, speed);
+}
+
+public void driveforward(double lspeed, double rspeed) {
+  drive.tankDrive(lspeed, rspeed);
+}
+
+
 
 }

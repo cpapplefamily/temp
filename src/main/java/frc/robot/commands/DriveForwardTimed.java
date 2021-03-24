@@ -12,13 +12,13 @@ import frc.robot.subsystems.DriveTrain;
 
 public class DriveForwardTimed extends CommandBase {
   /** Creates a new DriveForwardTimed. */
-  DriveTrain drivetrain;
+  private DriveTrain m_drivetrain;
   private boolean finish = false;
   Timer timer;
   public DriveForwardTimed(DriveTrain dt) {
-    drivetrain = dt;
-    Subsystem DriveTrain;
-	addRequirements(drivetrain);
+    m_drivetrain = dt;
+    
+	addRequirements(m_drivetrain);
     timer = new Timer();
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -30,7 +30,7 @@ public class DriveForwardTimed extends CommandBase {
     timer.start();
     while(timer.get() <Constants.DriveForwardTime)
     {
-      drivetrain.driveforward(Constants.AutonomousSpeed);
+      m_drivetrain.driveforward(Constants.AutonomousSpeed);
     }
     finish = true;
   }
@@ -43,7 +43,7 @@ public class DriveForwardTimed extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drivetrain.stop();
+    m_drivetrain.stop();
   }
 
   // Returns true when the command should end.

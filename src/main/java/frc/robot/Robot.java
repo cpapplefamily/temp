@@ -20,29 +20,29 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
 
-CANSparkMax leftfront = new CANSparkMax(5, MotorType.kBrushless);
-CANSparkMax rightfront = new CANSparkMax(7, MotorType.kBrushless); 
-CANSparkMax leftrear = new CANSparkMax(4, MotorType.kBrushless);
-CANSparkMax rightrear = new CANSparkMax(6, MotorType.kBrushless);
+ // CANSparkMax leftfront = new CANSparkMax(5, MotorType.kBrushless);
+  //CANSparkMax rightfront = new CANSparkMax(7, MotorType.kBrushless); 
+  //CANSparkMax leftrear = new CANSparkMax(4, MotorType.kBrushless);
+  //CANSparkMax rightrear = new CANSparkMax(6, MotorType.kBrushless);
 
 boolean trigger = true;
 
-CANSparkMax Wash = new CANSparkMax(2, MotorType.kBrushed);
-CANSparkMax Shooter = new CANSparkMax(9, MotorType.kBrushless);
-CANSparkMax ElevatorLeft = new CANSparkMax(10, MotorType.kBrushed);
-CANSparkMax ElevatorRight = new CANSparkMax(11, MotorType.kBrushed);
-CANSparkMax Collector = new CANSparkMax(3, MotorType.kBrushed); 
+//CANSparkMax Wash = new CANSparkMax(2, MotorType.kBrushed);
+//CANSparkMax Shooter = new CANSparkMax(9, MotorType.kBrushless);
+//CANSparkMax ElevatorLeft = new CANSparkMax(10, MotorType.kBrushed);
+//CANSparkMax ElevatorRight = new CANSparkMax(11, MotorType.kBrushed);
+//CANSparkMax Collector = new CANSparkMax(3, MotorType.kBrushed); 
 
 double rotate = 0.75;
 double speed = 0.75;
 
-Joystick leftstick = new Joystick(0);
-Joystick rightstick = new Joystick(1);
-Joystick codriverstick = new Joystick(2);
+//Joystick leftstick = new Joystick(0);
+//Joystick rightstick = new Joystick(1);
+//Joystick codriverstick = new Joystick(2);
 
 
-SpeedControllerGroup leftside = new SpeedControllerGroup(leftfront, leftrear);
-SpeedControllerGroup rightside = new SpeedControllerGroup (rightfront, rightrear);
+//SpeedControllerGroup leftside = new SpeedControllerGroup(leftfront, leftrear);
+//SpeedControllerGroup rightside = new SpeedControllerGroup (rightfront, rightrear);
 
 
   private Command m_autonomousCommand;
@@ -114,36 +114,29 @@ SpeedControllerGroup rightside = new SpeedControllerGroup (rightfront, rightrear
   public void teleopPeriodic () {
 
 
-    if(codriverstick.getRawButtonReleased(2) && trigger ==true){
-      trigger = false;
-    }
+    
 
-else {
+//if(codriverstick.getRawButton(2)==true){
 
-  trigger = false;
-}
+//Wash.set(-1.0);
 
-if(codriverstick.getRawButton(2)==true){
-
-Wash.set(-1.0);
-
-}
-else{
-  Wash.set(0);
-}
-    leftside.set(leftstick.getRawAxis(1));
-    rightside.set(rightstick.getRawAxis(1)*-1);
+//}
+//else{
+//  Wash.set(0);
+//}
+    //leftside.set(leftstick.getRawAxis(1));
+    //rightside.set(rightstick.getRawAxis(1)*-1);
 
 //Shooter Hopefully
-if(codriverstick.getRawButton(1)==true){
-  Shooter.set(-1.0);} 
+//if(codriverstick.getRawButton(1)==true){
+ // Shooter.set(-1.0);} 
       
-  else{
-    Shooter.set(0);
+  //else{
+    //Shooter.set(0);
   
  //Collector
-if(leftstick.getRawButton(1)==true){
-  Collector.set(-1.0);} 
+//if(leftstick.getRawButton(1)==true){
+  /*Collector.set(-1.0);} 
 
   if(leftstick.getRawButton(2)==true){
       Collector.set(1.0);} 
@@ -168,6 +161,7 @@ if(leftstick.getRawButton(4)==true){
 
 else{
   ElevatorRight.set(0);}}}}
+  */
 }
 
   @Override

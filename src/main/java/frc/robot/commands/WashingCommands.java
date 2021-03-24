@@ -5,10 +5,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.WashingMachine;
 
 public class WashingCommands extends CommandBase {
+  private WashingMachine m_wMachine;
   /** Creates a new Washing. */
-  public WashingCommands() {
+  public WashingCommands(WashingMachine subsytem) {
+    m_wMachine = subsytem;
+    addRequirements(m_wMachine);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -18,11 +22,15 @@ public class WashingCommands extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    m_wMachine.set(1.0);
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_wMachine.set(0.0);
+  }
 
   // Returns true when the command should end.
   @Override

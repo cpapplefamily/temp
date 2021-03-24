@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -11,10 +13,15 @@ import frc.robot.subsystems.DriveTrain;
 
 public class DriveTrainCommands extends CommandBase {
   private final DriveTrain drivetrain;
+  private Joystick leftstick;
+  private Joystick rightstick;
+  
   /** Creates a new DriveTrainCommands. */
  
-public DriveTrainCommands(DriveTrain dt) {
+public DriveTrainCommands(Joystick lcontroler, Joystick rcontroler, DriveTrain dt) {
   drivetrain = dt;
+  leftstick = lcontroler;
+  rightstick = rcontroler;
  addRequirements(drivetrain);
 }
 
@@ -25,12 +32,17 @@ public DriveTrainCommands(DriveTrain dt) {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.DriveTrainCommands(RobotContainer.lefstick, Constants.DriveTrainSpeed);
+    double lspeed = leftstick.getRawAxis(1);
+    double rspeed = rightstick.getRawAxis(1)*-1;
+    drivetrain.driveforward(lspeed,rspeed);
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    drivetrain.driveforward(0,0);
+  }
 
   // Returns true when the command should end.
   @Override
